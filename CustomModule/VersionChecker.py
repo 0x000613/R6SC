@@ -1,10 +1,8 @@
 import requests
-import mkQuery
+import CustomModule.mkQuery
 
 def versionChecker(prodname):
     URL = "https://api.xeros.dev"
     query = {"api":"vc", "prodname":prodname}
-    response = requests.get(mkQuery.mkQuery(URL, query))
-    print(response.text)
-
-versionChecker("asdf")
+    response = requests.get(CustomModule.mkQuery.mkQuery(URL, query))
+    return response.text

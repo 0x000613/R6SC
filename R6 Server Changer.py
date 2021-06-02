@@ -2,8 +2,11 @@ import os
 import time
 import getpass
 import configparser
+import CustomModule.VersionChecker
 
-os.system("title [XerosLab] R6 Server Changer - Version 1.0.0")
+programVersion = "1.0.0"
+
+os.system(f"title [XerosLab] R6 Server Changer - Version {programVersion}")
 
 allServerListKR = ["Default", "미국 동부", "미국 중부", "미국 남중부", "미국 서부", "브라질 남부", "북유럽", "서유럽", "남아프리카 북부", "동아시아", "동남아시아", "호주 동부", "호주 남동부", "동일본"]
 allServerListUS = ["default", "eastus", "centralus", "southcentralus", "westus", "brazilsouth", "northeurope", "westeurope", "southafricanorth", "eastasia", "southeastasia", "australiaeast", "australiasoutheast", "japaneast"]
@@ -12,10 +15,22 @@ configFileLocation = os.path.join(configFileLocation, os.listdir(configFileLocat
 config = configparser.ConfigParser()
 config.read(configFileLocation)
 
+def versionCheck():
+    print(f"현재 프로그램 버전은 {programVersion}입니다.")
+    lVersion = CustomModule.VersionChecker.versionChecker("r6serverchanger")
+    if lVersion != programVersion:
+        print(lVersion, programVersion)
+        print("업데이트가 발견되었습니다.\n업데이트 다운로드 페이지로 이동합니다.")
+        os.system("pause")
+        os.system("start https://blog.xeros.dev/215")
+    else:
+        print("최신버전입니다.")
+        time.sleep(2)
+
 def printServerList():
     currentServer = config["ONLINE"]["DataCenterHint"]
     count = 1
-    print("R6 Server Changer - Version 1.0.0")
+    print(f"R6 Server Changer - Version {programVersion}")
     print("Copyrightⓒ2008 Xeros All rights reserved.       https://blog.xeros.dev\n")
     print("※ 반드시 게임을 종료한 상태에서 서버를 변경해주시기 바랍니다. ※")
     print("현재 적용되어있는 서버 : {}".format(currentServer))
@@ -25,6 +40,7 @@ def printServerList():
         count += 1
 
 def main():
+    versionCheck()
     while True:
         os.system("cls")
         printServerList()
