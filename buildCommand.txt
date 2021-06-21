@@ -1,0 +1,1 @@
+pyinstaller --onefile -icon="C:\Users\Xeros\Documents\GitHub\R6-Server-Changer\r6sc.ico" "R6 Server Changer.py"
