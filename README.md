@@ -12,7 +12,7 @@ Ubisoft사의 Rainbow Six Siege 게임 플레이시 할당되는 중계 서버�
 
 [Feature pool](https://github.com/XerosLab/R6SC/projects/1)
 
-## Known issues
+## issues
 
 [Issues](https://github.com/XerosLab/R6SC/issues)
 
